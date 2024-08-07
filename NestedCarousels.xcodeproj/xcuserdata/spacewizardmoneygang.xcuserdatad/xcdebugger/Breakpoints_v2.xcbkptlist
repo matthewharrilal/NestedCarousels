@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "3446C3AB-5C63-4934-8753-153CAF8CB16F"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "30C4A462-F042-46D9-B2EB-FE49FFF5ABE0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NestedCarousels/Layouts/CarouselCollectionViewLayout.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "init(itemSize:totalWidth:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "30C4A462-F042-46D9-B2EB-FE49FFF5ABE0 - dcd90f32749e28bc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NestedCarousels.CarouselCollectionViewLayout.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;NestedCarousels.CarouselCollectionViewLayout&gt;"
+                  moduleName = "NestedCarousels"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/spacewizardmoneygang/Desktop/NestedCarousels/NestedCarousels/Layouts/CarouselCollectionViewLayout.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "30C4A462-F042-46D9-B2EB-FE49FFF5ABE0 - dc0cdaf2cfc10ad2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NestedCarousels.CarouselCollectionViewLayout.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;NestedCarousels.CarouselCollectionViewLayout&gt;"
+                  moduleName = "NestedCarousels"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/spacewizardmoneygang/Desktop/NestedCarousels/NestedCarousels/Layouts/CarouselCollectionViewLayout.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6A328639-07BB-43B1-BCBA-10D7DB4011A7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NestedCarousels/Layouts/CarouselCollectionViewLayout.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "prepare()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
