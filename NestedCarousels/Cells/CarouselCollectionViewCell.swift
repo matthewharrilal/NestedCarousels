@@ -14,6 +14,8 @@ class CarouselCollectionViewCell: UICollectionViewCell {
         String(describing: CarouselCollectionViewCell.self)
     }
     
+    private var displayLink: CADisplayLink?
+    
     private var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +36,7 @@ class CarouselCollectionViewCell: UICollectionViewCell {
         collectionView.isScrollEnabled = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(NestedCollectionViewCell.self, forCellWithReuseIdentifier: NestedCollectionViewCell.identifier)
-        
+        startAnimatingContentOffset()
         return collectionView
     }()
     
@@ -47,9 +49,21 @@ class CarouselCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func updateContentOffset() {
+        let offsetY = nestedCollectionView.contentOffset.y + 0.25
+        let visibleHeight = nestedCollectionView.bounds.height
+        nestedCollectionView.contentOffset = CGPoint(x: 0, y: offsetY)
+        
+        if offsetY >= nestedCollectionView.contentSize.height - (visibleHeight - 25) {
+            UIView.animate(withDuration: 0.25) { [weak self] in
+                self?.nestedCollectionView.contentOffset = CGPoint(x: 0, y: 0)
+            }
+        }
+    }
 }
 
-extension CarouselCollectionViewCell {
+private extension CarouselCollectionViewCell {
     
     func setup() {
         contentView.addSubview(containerView)
@@ -66,13 +80,19 @@ extension CarouselCollectionViewCell {
             nestedCollectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             nestedCollectionView.topAnchor.constraint(equalTo: containerView.topAnchor)
         ])
+        
+    }
+    
+    func startAnimatingContentOffset() {
+        displayLink = CADisplayLink(target: self, selector: #selector(updateContentOffset))
+        displayLink?.add(to: .main, forMode: .default)
     }
 }
 
 extension CarouselCollectionViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 30
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
