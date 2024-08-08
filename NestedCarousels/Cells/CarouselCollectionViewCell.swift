@@ -55,7 +55,7 @@ class CarouselCollectionViewCell: UICollectionViewCell {
         let visibleHeight = nestedCollectionView.bounds.height
         nestedCollectionView.contentOffset = CGPoint(x: 0, y: offsetY)
         
-        if offsetY >= nestedCollectionView.contentSize.height - (visibleHeight - 25) {
+        if offsetY >= nestedCollectionView.contentSize.height - (visibleHeight - 50) {
             UIView.animate(withDuration: 0.25) { [weak self] in
                 self?.nestedCollectionView.contentOffset = CGPoint(x: 0, y: 0)
             }
@@ -85,14 +85,14 @@ private extension CarouselCollectionViewCell {
     
     func startAnimatingContentOffset() {
         displayLink = CADisplayLink(target: self, selector: #selector(updateContentOffset))
-        displayLink?.add(to: .main, forMode: .default)
+        displayLink?.add(to: .main, forMode: .common)
     }
 }
 
 extension CarouselCollectionViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

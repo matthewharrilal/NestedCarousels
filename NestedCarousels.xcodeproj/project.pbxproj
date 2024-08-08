@@ -19,6 +19,7 @@
 		7660D0BC2C63C1D800D09D0D /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660D0BB2C63C1D800D09D0D /* CarouselCollectionViewCell.swift */; };
 		7660D0BE2C63C27100D09D0D /* CarouselCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660D0BD2C63C27100D09D0D /* CarouselCollectionViewLayout.swift */; };
 		7660D0C02C63C85600D09D0D /* NestedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660D0BF2C63C85600D09D0D /* NestedCollectionViewCell.swift */; };
+		76FAA9372C647D440001F0B1 /* NestedCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FAA9362C647D440001F0B1 /* NestedCarouselViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		7660D0BB2C63C1D800D09D0D /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		7660D0BD2C63C27100D09D0D /* CarouselCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewLayout.swift; sourceTree = "<group>"; };
 		7660D0BF2C63C85600D09D0D /* NestedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedCollectionViewCell.swift; sourceTree = "<group>"; };
+		76FAA9362C647D440001F0B1 /* NestedCarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedCarouselViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				7660D08B2C63C17E00D09D0D /* CarouselViewController.swift */,
+				76FAA9362C647D440001F0B1 /* NestedCarouselViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76FAA9372C647D440001F0B1 /* NestedCarouselViewController.swift in Sources */,
 				7660D0BC2C63C1D800D09D0D /* CarouselCollectionViewCell.swift in Sources */,
 				7660D08C2C63C17E00D09D0D /* CarouselViewController.swift in Sources */,
 				7660D0882C63C17E00D09D0D /* AppDelegate.swift in Sources */,
