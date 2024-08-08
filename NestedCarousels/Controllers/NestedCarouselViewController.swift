@@ -14,6 +14,8 @@ class NestedCarouselViewController: UIViewController {
     private let itemSize: CGSize
     private let totalWidth: CGFloat
     
+    private var displayLink: CADisplayLink?
+    
     public lazy var collectionView: UICollectionView = {
         let layout = CarouselCollectionViewLayout(itemSize: itemSize, totalWidth: totalWidth)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -35,6 +37,17 @@ class NestedCarouselViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func updateContentOffset() {
+        collectionView.contentOffset.y += 0.25
+        
+        let visibleHeight = collectionView.contentSize.height - collectionView.bounds.height
+        if collectionView.contentOffset.y >= visibleHeight {
+            UIView.animate(withDuration: 0.25) { [weak self] in
+                self?.collectionView.contentOffset = CGPoint(x: 0, y: 0)
+            }
+        }
+    }
 }
 
 private extension NestedCarouselViewController {
@@ -48,13 +61,20 @@ private extension NestedCarouselViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         ])
+        
+        startAnimatingContentOffset()
+    }
+    
+    func startAnimatingContentOffset() {
+        displayLink = CADisplayLink(target: self, selector: #selector(updateContentOffset))
+        displayLink?.add(to: .main, forMode: .default)
     }
 }
 
 extension NestedCarouselViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        30
+        10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
