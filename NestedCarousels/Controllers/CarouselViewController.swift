@@ -9,8 +9,9 @@ import UIKit
 
 class CarouselViewController: UIViewController {
     
+    private let itemSize: CGSize = CGSize(width: 160, height: 250)
+    
     private lazy var collectionView: UICollectionView = {
-        let itemSize: CGSize = CGSize(width: 160, height: 250)
         let layout = CarouselCollectionViewLayout(itemSize: itemSize, totalWidth: UIScreen.main.bounds.width)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource = self
@@ -39,6 +40,26 @@ extension CarouselViewController {
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         ])
     }
+    
+    func presentNestedCarouselViewController(startingFrame: CGRect) {
+        let nestedCarouselViewController = NestedCarouselViewController(
+            startingFrame: startingFrame,
+            itemSize: itemSize,
+            totalWidth: UIScreen.main.bounds.width
+        )
+        
+        addChild(nestedCarouselViewController)
+        view.addSubview(nestedCarouselViewController.view)
+        
+        nestedCarouselViewController.view.frame = startingFrame
+        nestedCarouselViewController.didMove(toParent: self)
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7) { [weak self] in
+            guard let self = self else { return }
+            
+            nestedCarouselViewController.view.frame = self.view.frame
+        }
+    }
 }
 
 extension CarouselViewController: UICollectionViewDataSource {
@@ -49,6 +70,15 @@ extension CarouselViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCollectionViewCell.identifier , for: indexPath) as? CarouselCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.onTapCell = { [weak self] indexPath in
+            guard
+                let self = self,
+                let cellFrame = cell.superview?.convert(cell.frame, to: nil)
+            else { return }
+            
+            self.presentNestedCarouselViewController(startingFrame: cellFrame)
+        }
         
         return cell
     }

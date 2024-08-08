@@ -14,6 +14,8 @@ class CarouselCollectionViewCell: UICollectionViewCell {
         String(describing: CarouselCollectionViewCell.self)
     }
     
+    var onTapCell: ((IndexPath) -> Void)?
+    
     private var displayLink: CADisplayLink?
     
     private var containerView: UIView = {
@@ -32,6 +34,7 @@ class CarouselCollectionViewCell: UICollectionViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.backgroundColor = .red
         collectionView.isScrollEnabled = false
         collectionView.showsVerticalScrollIndicator = false
@@ -80,7 +83,6 @@ private extension CarouselCollectionViewCell {
             nestedCollectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             nestedCollectionView.topAnchor.constraint(equalTo: containerView.topAnchor)
         ])
-        
     }
     
     func startAnimatingContentOffset() {
@@ -99,5 +101,14 @@ extension CarouselCollectionViewCell: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.identifier, for: indexPath) as? NestedCollectionViewCell else { return UICollectionViewCell() }
         
         return cell
+    }
+}
+
+extension CarouselCollectionViewCell: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? NestedCollectionViewCell else { return }
+        
+        onTapCell?(indexPath)
     }
 }
