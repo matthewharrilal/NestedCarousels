@@ -18,6 +18,8 @@ class NestedCarouselViewController: UIViewController {
         let layout = CarouselCollectionViewLayout(itemSize: itemSize, totalWidth: totalWidth)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(NestedCollectionViewCell.self, forCellWithReuseIdentifier: NestedCollectionViewCell.identifier)
+        collectionView.dataSource = self
         return collectionView
     }()
     

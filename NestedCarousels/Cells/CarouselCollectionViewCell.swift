@@ -14,7 +14,7 @@ class CarouselCollectionViewCell: UICollectionViewCell {
         String(describing: CarouselCollectionViewCell.self)
     }
     
-    var onTapCell: ((IndexPath) -> Void)?
+    var onTapCell: ((CGRect) -> Void)?
     
     private var displayLink: CADisplayLink?
     
@@ -26,7 +26,7 @@ class CarouselCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var nestedCollectionView: UICollectionView = {
+    public lazy var nestedCollectionView: UICollectionView = {
         let totalWidth: CGFloat = 160
 
         let itemSize = CGSize(width: 50, height: 80)
@@ -109,6 +109,8 @@ extension CarouselCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? NestedCollectionViewCell else { return }
         
-        onTapCell?(indexPath)
+        if let cellFrame = cell.superview?.convert(cell.frame, to: nil) {
+            onTapCell?(cellFrame)
+        }
     }
 }
