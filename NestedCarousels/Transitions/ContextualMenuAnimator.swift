@@ -43,7 +43,7 @@ class ContextualMenuAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             
             containerView.addSubview(presentedView)
 
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveEaseOut]) {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.2, options: [.curveEaseOut]) {
                 presentedView.frame = endingFrame
                 presentedView.layer.cornerRadius = 18
             } completion: { _ in
