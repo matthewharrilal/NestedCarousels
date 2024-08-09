@@ -15,6 +15,7 @@ class NestedCarouselViewController: UIViewController {
     private let totalWidth: CGFloat
     
     private var displayLink: CADisplayLink?
+    private var contextualMenuTransitionDelegate = ContextualMenuTransitionDelegate()
     
     public lazy var collectionView: UICollectionView = {
         let layout = CarouselCollectionViewLayout(itemSize: itemSize, totalWidth: totalWidth)
@@ -22,6 +23,7 @@ class NestedCarouselViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(NestedCollectionViewCell.self, forCellWithReuseIdentifier: NestedCollectionViewCell.identifier)
         collectionView.dataSource = self
+        collectionView.delegate = self
         return collectionView
     }()
     
@@ -81,5 +83,22 @@ extension NestedCarouselViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NestedCollectionViewCell.identifier, for: indexPath) as? NestedCollectionViewCell else { return UICollectionViewCell() }
         
         return cell
+    }
+}
+
+extension NestedCarouselViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? NestedCollectionViewCell else { return }
+        
+        displayLink?.invalidate()
+        
+        if let cellFrame = cell.superview?.convert(cell.frame, to: nil) {
+            let contextualMenuViewController = ContextualMenuViewController()
+            contextualMenuTransitionDelegate.startingFrame = cellFrame
+            contextualMenuViewController.transitioningDelegate = contextualMenuTransitionDelegate
+            contextualMenuViewController.modalPresentationStyle = .custom
+            present(contextualMenuViewController, animated: true)
+        }
     }
 }
