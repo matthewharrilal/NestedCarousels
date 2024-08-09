@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "95D85325-A661-497B-AE9D-E933ED432B13"
+            uuid = "8C476563-1894-405B-9132-9ABD75393D16"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NestedCarousels/Controllers/NestedCarouselViewController.swift"
+            filePath = "NestedCarousels/Transitions/ContextualMenuPresentationController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "didTapDimmingView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

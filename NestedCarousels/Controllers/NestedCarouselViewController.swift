@@ -15,7 +15,7 @@ class NestedCarouselViewController: UIViewController {
     private let totalWidth: CGFloat
     
     private var displayLink: CADisplayLink?
-    private var contextualMenuTransitionDelegate = ContextualMenuTransitionDelegate()
+    private var contextualMenuTransitionDelegate = ContextualMenuTransitionDelegateImplementation()
     
     public lazy var collectionView: UICollectionView = {
         let layout = CarouselCollectionViewLayout(itemSize: itemSize, totalWidth: totalWidth)
@@ -100,5 +100,12 @@ extension NestedCarouselViewController: UICollectionViewDelegate {
             contextualMenuViewController.modalPresentationStyle = .custom
             present(contextualMenuViewController, animated: true)
         }
+    }
+}
+
+extension NestedCarouselViewController: ContextualMenuTransitionDelegate {
+    
+    func didTapDimmingView() {
+        startAnimatingContentOffset()
     }
 }

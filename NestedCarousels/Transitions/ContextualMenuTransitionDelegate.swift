@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-class ContextualMenuTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
+protocol ContextualMenuTransitionDelegate: UIViewControllerTransitioningDelegate {
+    func didTapDimmingView()
+}
+
+class ContextualMenuTransitionDelegateImplementation: NSObject, UIViewControllerTransitioningDelegate {
     
     private lazy var transitionAnimator = ContextualMenuAnimator(startingFrame: startingFrame)
     
@@ -19,10 +23,18 @@ class ContextualMenuTransitionDelegate: NSObject, UIViewControllerTransitioningD
     }
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        ContextualMenuPresentationController(
+        let presentationController = ContextualMenuPresentationController(
             presentedViewController: presented,
-            presenting: presenting
+            presenting: presenting ?? source
         )
+        
+        // Whoevers conforms to ContextualMenuTransitionDelegate can own the contextualMenuDelegate of the presentationController
+        // Don't typically want to use source in case you have embeeded presenting view controllers ... source may not be accurate source of truth
+        if let presentingViewController = source as? ContextualMenuTransitionDelegate {
+            presentationController.contextualMenuDelegate = presentingViewController
+        }
+        
+        return presentationController
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
