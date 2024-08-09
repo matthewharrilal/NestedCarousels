@@ -12,7 +12,11 @@ class ContextualMenuTransitionDelegate: NSObject, UIViewControllerTransitioningD
     
     private lazy var transitionAnimator = ContextualMenuAnimator(startingFrame: startingFrame)
     
-    public var startingFrame: CGRect = .zero
+    public var startingFrame: CGRect = .zero {
+        didSet {
+            transitionAnimator = ContextualMenuAnimator(startingFrame: startingFrame)
+        }
+    }
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         ContextualMenuPresentationController(

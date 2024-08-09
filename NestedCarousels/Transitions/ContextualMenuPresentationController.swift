@@ -12,6 +12,8 @@ class ContextualMenuPresentationController: UIPresentationController {
     
     private var menuSize = CGSize(width: 200, height: 200)
     
+    private var dimmingView: UIView!
+    
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
@@ -27,5 +29,27 @@ class ContextualMenuPresentationController: UIPresentationController {
             width: menuSize.width,
             height: menuSize.height
         )
+    }
+    
+    override func presentationTransitionWillBegin() {
+        super.presentationTransitionWillBegin()
+        
+        guard let containerView = containerView else { return }
+        
+        dimmingView = UIView(frame: containerView.bounds)
+        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        dimmingView.alpha = 0
+        containerView.addSubview(dimmingView)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTappedDimmingView))
+        dimmingView.addGestureRecognizer(tapGestureRecognizer)
+        
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            self?.dimmingView.alpha = 1
+        }
+    }
+    
+    @objc func onTappedDimmingView() {
+        presentedViewController.dismiss(animated: true)
     }
 }
