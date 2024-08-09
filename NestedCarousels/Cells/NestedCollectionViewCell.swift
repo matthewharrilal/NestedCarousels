@@ -14,11 +14,11 @@ class NestedCollectionViewCell: UICollectionViewCell {
         String(describing: NestedCollectionViewCell.self)
     }
     
-    private var containerView: UIView = {
-        let view = UIView()
+    private var containerView: ScalableContainerView = {
+        let view = ScalableContainerView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 18
-        view.backgroundColor = .blue
+        view.backgroundColor = UIView.colors.randomElement()
         return view
     }()
     

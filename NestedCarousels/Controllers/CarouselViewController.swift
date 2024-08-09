@@ -54,7 +54,7 @@ extension CarouselViewController {
         view.addSubview(nestedCarouselViewController.view)
         view.layoutIfNeeded()
         
-        UIView.animate(withDuration: 0.5) { [weak self] in
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut]) { [weak self] in
             guard let self = self else { return }
             
             nestedCarouselViewController.view.frame = self.collectionView.frame

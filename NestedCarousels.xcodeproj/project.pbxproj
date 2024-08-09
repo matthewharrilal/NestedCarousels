@@ -20,6 +20,9 @@
 		7660D0BE2C63C27100D09D0D /* CarouselCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660D0BD2C63C27100D09D0D /* CarouselCollectionViewLayout.swift */; };
 		7660D0C02C63C85600D09D0D /* NestedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660D0BF2C63C85600D09D0D /* NestedCollectionViewCell.swift */; };
 		76FAA9372C647D440001F0B1 /* NestedCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FAA9362C647D440001F0B1 /* NestedCarouselViewController.swift */; };
+		76FAA93A2C6591DE0001F0B1 /* ScalableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FAA9392C6591DE0001F0B1 /* ScalableContainerView.swift */; };
+		76FAA93C2C6593A40001F0B1 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FAA93B2C6593A40001F0B1 /* UIView+Extension.swift */; };
+		76FAA93E2C6593D90001F0B1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FAA93D2C6593D90001F0B1 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		7660D0BD2C63C27100D09D0D /* CarouselCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewLayout.swift; sourceTree = "<group>"; };
 		7660D0BF2C63C85600D09D0D /* NestedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedCollectionViewCell.swift; sourceTree = "<group>"; };
 		76FAA9362C647D440001F0B1 /* NestedCarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedCarouselViewController.swift; sourceTree = "<group>"; };
+		76FAA9392C6591DE0001F0B1 /* ScalableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalableContainerView.swift; sourceTree = "<group>"; };
+		76FAA93B2C6593A40001F0B1 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		76FAA93D2C6593D90001F0B1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,9 @@
 		7660D0B82C63C1BC00D09D0D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				76FAA9392C6591DE0001F0B1 /* ScalableContainerView.swift */,
+				76FAA93B2C6593A40001F0B1 /* UIView+Extension.swift */,
+				76FAA93D2C6593D90001F0B1 /* UIColor+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -305,10 +314,13 @@
 				76FAA9372C647D440001F0B1 /* NestedCarouselViewController.swift in Sources */,
 				7660D0BC2C63C1D800D09D0D /* CarouselCollectionViewCell.swift in Sources */,
 				7660D08C2C63C17E00D09D0D /* CarouselViewController.swift in Sources */,
+				76FAA93C2C6593A40001F0B1 /* UIView+Extension.swift in Sources */,
+				76FAA93A2C6591DE0001F0B1 /* ScalableContainerView.swift in Sources */,
 				7660D0882C63C17E00D09D0D /* AppDelegate.swift in Sources */,
 				7660D0C02C63C85600D09D0D /* NestedCollectionViewCell.swift in Sources */,
 				7660D08A2C63C17E00D09D0D /* SceneDelegate.swift in Sources */,
 				7660D0BE2C63C27100D09D0D /* CarouselCollectionViewLayout.swift in Sources */,
+				76FAA93E2C6593D90001F0B1 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
